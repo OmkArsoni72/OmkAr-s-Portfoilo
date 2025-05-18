@@ -63,7 +63,7 @@ const Skills: React.FC = () => {
               key={category.id}
               className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <h3 className="text-xl font-semibold mb-6 text-center">{category.name}</h3>
+              <h3 className="text-xl font-semibold mb-6 text-center text-indigo-600">{category.name}</h3>
               
               <div className="grid grid-cols-2 gap-4">
                 {skills

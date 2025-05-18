@@ -42,7 +42,7 @@ const Header: React.FC = () => {
       <div className="container px-4 mx-auto md:px-6">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-xl font-bold tracking-tight">
-            <span className="text-indigo-600">Omkar</span> Soni
+            <span className="text-indigo-600">OmkAr</span> Soni
           </a>
 
           {/* Desktop Navigation */}

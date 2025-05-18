@@ -19,14 +19,14 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+    <footer className="py-12 text-white bg-gray-900">
+      <div className="container px-4 mx-auto md:px-6">
+        <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-6 md:mb-0">
             <a href="#home" className="text-xl font-bold tracking-tight">
-              <span className="text-indigo-400">Omkar</span> Soni
+              <span className="text-indigo-400">OmkAr</span> Soni
             </a>
-            <p className="mt-2 text-gray-400 max-w-md">
+            <p className="max-w-md mt-2 text-gray-400">
               Startup Founder | Developer | Educator
             </p>
           </div>
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition-colors duration-300"
+                className="flex items-center justify-center w-10 h-10 transition-colors duration-300 bg-gray-800 rounded-full hover:bg-indigo-600"
                 aria-label={link.name}
               >
                 {renderIcon(link.icon)}
@@ -47,14 +47,14 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col items-center justify-between pt-8 mt-8 border-t border-gray-800 md:flex-row">
           <p className="text-gray-400">
             &copy; {new Date().getFullYear()} Omkar Soni. All rights reserved.
           </p>
           
           <button
             onClick={scrollToTop}
-            className="mt-4 md:mt-0 h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center hover:bg-indigo-700 transition-colors duration-300"
+            className="flex items-center justify-center w-10 h-10 mt-4 transition-colors duration-300 bg-indigo-600 rounded-full md:mt-0 hover:bg-indigo-700"
             aria-label="Scroll to top"
           >
             <ArrowUp size={20} className="text-white" />

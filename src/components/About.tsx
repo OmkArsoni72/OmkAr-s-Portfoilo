@@ -42,7 +42,7 @@ const About: React.FC = () => {
             <div className="w-16 h-1 mb-6 bg-indigo-600"></div>
             
             <p className="mb-4 leading-relaxed text-gray-700">
-              Hello! I'm Omkar Soni, from Ranchi and currently pursuing my B.Tech in Computer Science Engineering at RCET Bhilai (2023–2027).
+              Hello! I'm Omkar Soni, from Ranchi Jharkhand and currently pursuing my B.Tech in Information Technology at RCET Bhilai Chhattishgarh (2023–2027).
             </p>
             
             <p className="mb-4 leading-relaxed text-gray-700">
