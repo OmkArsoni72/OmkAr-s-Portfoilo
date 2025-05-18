@@ -32,12 +32,12 @@ const Experience: React.FC = () => {
     <section 
       id="experience" 
       ref={sectionRef}
-      className="py-20 bg-gray-50 opacity-0 transition-opacity duration-1000"
+      className="py-20 transition-opacity duration-1000 opacity-0 bg-gray-50"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Experience</h2>
-          <div className="h-1 w-16 bg-indigo-600 mx-auto mb-6"></div>
+      <div className="container px-4 mx-auto md:px-6">
+        <div className="max-w-3xl mx-auto mb-12 text-center">
+          <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">Experience</h2>
+          <div className="w-16 h-1 mx-auto mb-6 bg-indigo-600"></div>
           <p className="text-gray-700">
             My professional journey has equipped me with diverse skills in entrepreneurship, 
             education, and software development.
@@ -47,7 +47,7 @@ const Experience: React.FC = () => {
         <div className="max-w-3xl mx-auto mt-12">
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-px bg-indigo-200"></div>
+            <div className="absolute left-0 w-px h-full transform bg-indigo-200 md:left-1/2 md:-translate-x-1/2"></div>
             
             {experiences.map((exp, index) => (
               <div 
@@ -67,12 +67,12 @@ const Experience: React.FC = () => {
                   index % 2 === 0 ? 'ml-8 md:ml-0' : 'ml-8 md:ml-0'
                 }`}>
                   <div className="mb-2">
-                    <span className="inline-block bg-indigo-100 text-indigo-800 text-sm px-3 py-1 rounded-full">
+                    <span className="inline-block px-3 py-1 text-sm text-indigo-800 bg-indigo-100 rounded-full">
                       {exp.duration}
                     </span>
                   </div>
                   <h3 className="text-xl font-semibold">{exp.role}</h3>
-                  <h4 className="text-indigo-600 font-medium mb-3">{exp.company}</h4>
+                  <h4 className="mb-3 font-medium text-indigo-600">{exp.company}</h4>
                   <p className="text-gray-600">{exp.description}</p>
                 </div>
               </div>

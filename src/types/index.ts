@@ -19,6 +19,7 @@ export interface Experience {
   company: string;
   duration: string;
   description: string;
+  link?: string;
 }
 
 export interface SocialLink {
