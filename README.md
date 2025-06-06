@@ -3,4 +3,5 @@
 >>>>>> upload images nd skills by OmkAe Soni
 >>>>>> link added somthing data cahnges nd photo size changes nd fit
 >>>>>> text editing nd color cahnges
+>>>>>> download resume
 >>>>>> 
