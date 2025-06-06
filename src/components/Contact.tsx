@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mail, MapPin, Send } from 'lucide-react';
+import { Mail, MapPin, Send, Download } from 'lucide-react';
 import { socialLinks } from '../data/socialLinks';
 import * as LucideIcons from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
+import { generateResumePDF } from '../services/resumeGenerator';
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isGeneratingResume, setIsGeneratingResume] = useState(false);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -28,13 +30,14 @@ const Contact: React.FC = () => {
       }
     );
     
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSectionRef = sectionRef.current;
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef);
     }
     
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef);
       }
     };
   }, []);
@@ -82,8 +85,24 @@ const Contact: React.FC = () => {
     }
   };
 
+  const handleDownloadResume = async () => {
+    try {
+      setIsGeneratingResume(true);
+      toast.loading('Generating resume PDF...', { id: 'resume-generation' });
+      
+      await generateResumePDF();
+      
+      toast.success('Resume downloaded successfully!', { id: 'resume-generation' });
+    } catch (error) {
+      console.error('Resume generation error:', error);
+      toast.error('Failed to generate resume. Please try again.', { id: 'resume-generation' });
+    } finally {
+      setIsGeneratingResume(false);
+    }
+  };
+
   const renderIcon = (iconName: string) => {
-    const Icon = (LucideIcons as Record<string, React.FC<{ size?: number; className?: string }>>)[
+    const Icon = (LucideIcons as any)[
       iconName.charAt(0).toUpperCase() + iconName.slice(1)
     ];
     return Icon ? <Icon size={20} className="text-indigo-600" /> : null;
@@ -232,13 +251,21 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="mt-8">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-6 py-2 font-medium text-indigo-600 transition-colors duration-300 border border-indigo-600 rounded-md hover:bg-indigo-600 hover:text-white"
-                  download
+                <button
+                  onClick={handleDownloadResume}
+                  disabled={isGeneratingResume}
+                  className="inline-flex items-center px-6 py-2 font-medium text-indigo-600 transition-colors duration-300 border border-indigo-600 rounded-md hover:bg-indigo-600 hover:text-white disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Download Resume
-                </a>
+                  {isGeneratingResume ? (
+                    <>
+                      Generating... <div className="ml-2 w-4 h-4 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                    </>
+                  ) : (
+                    <>
+                      Download Resume <Download size={16} className="ml-2" />
+                    </>
+                  )}
+                </button>
               </div>
             </div>
           </div>
